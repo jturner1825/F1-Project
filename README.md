@@ -7,8 +7,8 @@ This project models drivers and teams, simulates race results, allocates points 
 
 ## 📌 Project Overview
 
-The goal of this project is to simulate a full Formula 1 season using clean, modular, and extensible Python code.  
-It focuses on strong object-oriented design, clear data flow, and realistic championship logic rather than graphics or real-time visualization.
+The goal of this project is to simulate a Formula 1 season using clean, modular, and extensible Python code.  
+It emphasizes strong object-oriented design, clear data flow, and realistic championship logic rather than graphics or real-time visualization.
 
 The simulation currently supports:
 - Driver and team modeling
@@ -16,36 +16,36 @@ The simulation currently supports:
 - Official-style F1 points allocation
 - Tracking of wins and championship standings
 
-The project is designed to be extended over time with additional realism such as ratings, randomness, circuits, and season analytics.
+The project is designed to be extended over time with additional realism such as ratings, randomness, circuits, and season-level analysis.
 
 ---
 
 ## 🧠 Core Concepts Practiced
 
 - Object-Oriented Programming (classes, encapsulation, relationships)
-- State management across a season
-- Separation of responsibilities (drivers vs teams vs races)
-- Deterministic simulation logic
+- State management across multiple races
+- Separation of responsibilities (models vs simulation logic)
+- Deterministic simulation design
 - Clean data modeling for sports simulations
 
 ---
 
 ## 🏁 Current Features
 
-- Driver class with:
+- **Driver model** including:
   - Name
   - Team
   - Rating (placeholder for future use)
   - Total points
   - Race wins
 
-- Team class with:
+- **Team model** including:
   - Team name
   - Drivers
   - Constructors’ points
   - Constructors’ wins
 
-- Single-race simulation:
+- **Race simulation**:
   - Ordered finishing positions
   - Point distribution based on finishing position
   - Updates to driver and team standings
@@ -54,30 +54,30 @@ The project is designed to be extended over time with additional realism such as
 
 ## 🔧 Planned Features
 
-- Multiple race season simulation
+- Multi-race season simulation
 - Circuit modeling (lap count, location, difficulty)
 - Driver and team performance ratings
-- Randomized race outcomes based on ratings
+- Probabilistic race outcomes based on ratings
 - Constructors’ Championship logic refinement
 - Season summary and standings output
-- Optional data analysis / visualization
+- Optional data analysis or visualization
 
 ---
 
 ## 📂 Project Structure (Planned)
 
 ```text
-f1-simulation/
+F1-Project/
 │
-├── drivers/
-│   └── driver.py
-├── teams/
-│   └── team.py
-├── races/
-│   └── race.py
-├── circuits/
-│   └── circuit.py
-├── simulation/
-│   └── season.py
+├── src/
+│   └── f1sim/
+│       ├── models/
+│       │   ├── driver.py
+│       │   ├── team.py
+│       │   └── circuit.py
+│       ├── sim/
+│       │   ├── race.py
+│       │   └── season.py
+│       └── __init__.py
 ├── main.py
 └── README.md
