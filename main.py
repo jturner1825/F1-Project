@@ -3,6 +3,7 @@ from f1sim.models.team import Team
 from f1sim.sim.race import Race
 from f1sim.reporting.race_summary import RaceSummary
 from f1sim.services.circuit_repository import CircuitRepository
+from f1sim.services.race_scorer import RaceScorer
 
 def main():
     circuits = CircuitRepository.load_from_json(
@@ -32,11 +33,14 @@ def main():
     for team_name, team_drivers in teams_dict.items():
         teams.append(Team(team_name, team_drivers))
 
-    r = Race(drivers, teams)
-    winner, results = r.simulate_race()
+    r = Race(drivers)
+    results = r.simulate_race()
+    scorer = RaceScorer(results, teams)
+    scorer.apply_points()
+
     print("Race Complete!")
     
-    summary = RaceSummary(winner, results, drivers, teams)
+    summary = RaceSummary(results[0], results, drivers, teams)
     print(summary.return_winner())
     print(summary.return_podium())
     print(summary.return_race_results())

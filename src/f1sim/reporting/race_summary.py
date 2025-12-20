@@ -16,7 +16,7 @@ class RaceSummary:
         return "\n".join(lines)
 
     def return_winner(self):
-        return f"{self.winner.name} has won the race!\n"
+        return f"{self.winner[0].name} has won the race!\n"
 
     def return_podium(self):
         lines = []
