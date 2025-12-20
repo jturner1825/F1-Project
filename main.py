@@ -2,8 +2,15 @@ from f1sim.models.driver import Driver
 from f1sim.models.team import Team
 from f1sim.sim.race import Race
 from f1sim.reporting.race_summary import RaceSummary
+from f1sim.services.circuit_repository import CircuitRepository
 
 def main():
+    circuits = CircuitRepository.load_from_json(
+        "src/f1sim/data/circuits_2025.json"
+    )
+
+    print(circuits[0])
+    
     drivers_names = ["Norris", "Verstappen", "Piastri", "Russel", "Leclerc", "Hamilton", "Antonelli", "Albon", "Sainz", "Alonso", "Hulkenberg",
                      "Hadjar", "Bearman", "Lawson", "Ocon", "Stroll", "Tsunoda", "Gasly", "Bortoleto", "Colapinto"]
     team = ["McLeran", "Red Bull", "McLeran", "Mercedes", "Ferrari", "Ferrari", "Mercedes", "Williams", "Williams", "Aston Martin", 
