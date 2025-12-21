@@ -1,5 +1,4 @@
 from f1sim.sim.season import Season
-from f1sim.reporting.race_summary import RaceSummary
 from f1sim.services.loader import load_teams, load_drivers, load_circuits
 
 def print_menu():
