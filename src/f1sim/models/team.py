@@ -1,7 +1,8 @@
 class Team:
-    def __init__(self, name, drivers):
+    def __init__(self, id, name):
+        self.id = id
         self.name = name
-        self.drivers = drivers
+        self.drivers = []
         self.points = 0
         self.wins = 0
 

@@ -1,8 +1,9 @@
 class Driver:
-    def __init__(self, name, team, rating):
+    def __init__(self, id, name, rating, team):
+        self.id = id 
         self.name = name
-        self.team = team
         self.rating = rating
+        self.team = team
         self.points = 0
         self.wins = 0
     

@@ -10,13 +10,8 @@ class RaceScorer:
         if not self.results:
             self.winner = None
             return
-        
-        # Build a quick lookup so we don't nested-loop teams every time
-        team_by_name = {t.name: t for t in self.teams}
 
         self.winner = self.results[0][0]
-
-        # Driver win
         self.winner.add_win()
 
         # Award driver + constructor points
@@ -25,11 +20,6 @@ class RaceScorer:
 
             driver.add_points(points)
 
-            team = team_by_name.get(driver.team)
-            if team is not None:
-                team.add_points(points)
+            driver.team.add_points(points)
 
-        # Award constructor win to winner's team
-        winner_team = team_by_name.get(self.winner.team)
-        if winner_team is not None:
-            winner_team.add_win()
+        self.winner.team.add_win()
