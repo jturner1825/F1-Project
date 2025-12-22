@@ -52,6 +52,14 @@ The project is designed to be extended over time with additional realism such as
 
 ---
 
+## Version 1.0.0
+- Full F1 season simulation
+- Driver and constructor standings
+- CLI-driven race progression
+- JSON-based data loading
+
+---
+
 ## 🔧 Planned Features
 
 - Multi-race season simulation
