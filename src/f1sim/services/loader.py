@@ -20,7 +20,11 @@ def load_drivers(path: str | Path, teams_by_id: dict[str, Team]) -> list[Driver]
         driver = Driver(
             id=d["id"],
             name=d["name"],
-            rating=d["rating"],
+            overall=d["overall"],
+            experience=d.get("experience"),
+            race=d.get("race"),
+            awareness=d.get("awareness"),
+            pace=d.get("pace"),
             team=team
         )
         drivers.append(driver)
