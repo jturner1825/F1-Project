@@ -17,7 +17,7 @@ class Season:
             return "Season Finished. No more races to run!\n"
         
         circuit = self.circuits[self.current_round - 1] # Pick current circuit for this round (0-indexed)
-        r = Race(self.drivers, circuit)
+        r = Race(self.drivers, self.current_round, circuit)
         results = r.simulate_race()
         
         scorer = RaceScorer(results, self.teams)
@@ -36,7 +36,7 @@ class Season:
         while self.current_round <= len(self.circuits):
             circuit = self.circuits[self.current_round - 1]
 
-            r = Race(self.drivers, circuit)
+            r = Race(self.drivers, self.current_round, circuit)
             results = r.simulate_race()
 
             scorer = RaceScorer(results, self.teams)
@@ -74,7 +74,7 @@ class Season:
         lines.append("Final Podium")
         lines.append("-------------------")
 
-        for i, driver in enumerate(self.results[:3], start=1):
+        for i, driver in enumerate(self.last_race_results[:3], start=1):
             lines.append(f"{i}. {driver[0].name}")
         lines.append("")
         return "\n".join(lines)
