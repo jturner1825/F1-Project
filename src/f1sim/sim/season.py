@@ -1,11 +1,14 @@
 from f1sim.sim.race import Race
 from f1sim.services.race_scorer import RaceScorer
 
+import random
+
 class Season:
-    def __init__(self, drivers, teams, circuits):
+    def __init__(self, drivers, teams, circuits, seed = None):
         self.drivers = drivers
         self.teams = teams
         self.circuits = circuits
+        self.seed = seed
 
         self.current_round = 1
         self.last_race_results = None
@@ -17,7 +20,7 @@ class Season:
             return "Season Finished. No more races to run!\n"
         
         circuit = self.circuits[self.current_round - 1] # Pick current circuit for this round (0-indexed)
-        r = Race(self.drivers, self.current_round, circuit)
+        r = Race(self.drivers, self.current_round, circuit, self.seed)
         results = r.simulate_race()
         
         scorer = RaceScorer(results, self.teams)
@@ -35,8 +38,9 @@ class Season:
 
         while self.current_round <= len(self.circuits):
             circuit = self.circuits[self.current_round - 1]
+            race_seed = self.seed + self.current_round if self.seed is not None else None
 
-            r = Race(self.drivers, self.current_round, circuit)
+            r = Race(self.drivers, self.current_round, circuit, race_seed)
             results = r.simulate_race()
 
             scorer = RaceScorer(results, self.teams)

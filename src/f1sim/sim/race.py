@@ -1,11 +1,12 @@
 import random
 
 class Race():
-    def __init__(self, drivers, round, circuit):
+    def __init__(self, drivers, round, circuit, seed = None):
         self.drivers = drivers
         self.round = round
         self.circuit = circuit
         self.results = []
+        self.rng = random.Random(seed)
         
     def simulate_race(self):
         print(f"Simulating Round {self.round}")
@@ -26,13 +27,13 @@ class Race():
             sigma *= self.circuit.difficulty
             
             # Add Gaussian noise
-            noise = random.gauss(0, sigma)
+            noise = self.rng.gauss(0, sigma)
             performance = race_pace + noise
             
             # Add awareness-based errors
             mistake_prob = (1 - driver.awareness_norm) * 0.12
-            if random.random() < mistake_prob:
-                performance -= random.uniform(0.05, 0.25) 
+            if self.rng.random() < mistake_prob:
+                performance -= self.rng.uniform(0.05, 0.25) 
         
             self.results.append((driver, performance))
 
