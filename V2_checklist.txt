@@ -16,18 +16,18 @@ Goal: Improve realism by mapping F125-style stats to per-driver attributes, addi
    - Ensure deterministic results when seed provided
 
 4) Race performance formula (per driver)
-   - base = overall_rating_norm
-   - qualifying_speed = base * (0.9 + 0.2 * pace_norm)
-   - race_pace = base * (0.9 + 0.15 * race_norm)
-   - consistency = 0.5 + 0.5 * (0.6 * experience_norm + 0.4 * awareness_norm)
-   - sigma = (1 - consistency) * 0.12
-   - performance = race_pace + rng.gauss(0, sigma)
-   - mistake_chance = (1 - awareness_norm) * 0.12
-   - If a mistake occurs, apply a penalty (e.g., -0.25 to performance)
+   [x] base = overall_rating_norm
+   [x] qualifying_speed = base * (0.9 + 0.2 * pace_norm)
+   [x] race_pace = base * (0.9 + 0.15 * race_norm)
+   [x] consistency = 0.5 + 0.5 * (0.6 * experience_norm + 0.4 * awareness_norm)
+   [x] sigma = (1 - consistency) * 0.12
+   [x] performance = race_pace + rng.gauss(0, sigma)
+   [x] mistake_chance = (1 - awareness_norm) * 0.12
+   [x] If a mistake occurs, apply a penalty (e.g., -0.25 to performance)
 
 5) Circuit influence
-   - Use `Circuit.difficulty` to scale sigma (harder circuits increase variability)
-   - Example: sigma *= circuit.difficulty
+   [x] Use `Circuit.difficulty` to scale sigma (harder circuits increase variability)
+   [x] Example: sigma *= circuit.difficulty
 
 6) Implementation order
    - Add fields to `Driver` and update JSON loader mapping
